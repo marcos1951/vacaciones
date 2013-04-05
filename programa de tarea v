@@ -1,0 +1,48 @@
+using System;
+using System.IO;
+
+namespace Tareadevacaciones
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            
+           
+            Console.WriteLine("PROGRAMA QUE BUSCA 2 ARCHIVOS Y LOS JUNTA ENTRE SI\n\n");
+            Console.WriteLine("INGRESA LOS ARCHIVOS A LOCALIZAR \n\n[ ejemplo C:\\\\prueba.txt ]\n");
+            
+            //SE LEE LA RUTA DEL ARCHIVO...
+            
+            
+            Console.Write("Archivo 1: ");
+            string archivo1 = Console.ReadLine();
+            Console.Write("Archivo 2: ");
+            string archivo2 = Console.ReadLine();
+
+            
+            
+            // SE REALIZAN LAS COMPARACIONES... 
+            
+            
+            if (File.Exists(archivo1) && File.Exists(archivo2))
+            {
+                Console.WriteLine("\n\n\t EL ARCHIVO " + archivo1 + " SI EXISTE Y CONTIENE:\n\n");
+                FileStream fs = new FileStream(archivo1, FileMode.Open);
+                StreamReader reader = new StreamReader(fs);
+                Console.WriteLine(reader.ReadToEnd());
+
+                Console.WriteLine("\n\n\t EL ARCHIVO " + archivo2 + " SI EXISTE Y CONTIENE:\n\n");
+                FileStream fs2 = new FileStream(archivo2, FileMode.Open);
+                StreamReader reader2 = new StreamReader(fs2);
+                Console.WriteLine(reader2.ReadToEnd());
+            }
+            else
+            {
+                Console.WriteLine("\n\n\t LO SIENTO ALGUN ARCHIVO NO EXISTE");
+            }
+
+            Console.ReadKey();
+        }
+    }
+}
